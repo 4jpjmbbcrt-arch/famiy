@@ -1,0 +1,126 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  direction: rtl;
+  background-color: #f0f4f8;
+  color: #222;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #0984e3;
+}
+
+#backBtn {
+  background-color: #0984e3;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(9,132,227,0.7);
+  transition: background-color 0.3s ease;
+}
+
+#backBtn:hover {
+  background-color: #0659b1;
+}
+
+.message-input {
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #74b9ff;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+  border-color: #0984e3;
+}
+
+#sendBtn {
+  margin-top: 10px;
+  background-color: #0984e3;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-weight: 700;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #0659b1;
+  transition: background-color 0.3s ease;
+}
+
+#sendBtn:hover {
+  background-color: #0659b1;
+}
+
+.messages-list {
+  max-height: 400px;
+  overflow-y: auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.message-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  position: relative;
+}
+
+.message-item:last-child {
+  border-bottom: none;
+}
+
+.message-text {
+  font-size: 1.1rem;
+  color: #222;
+  margin-bottom: 5px;
+  white-space: pre-wrap;
+}
+
+.message-meta {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.delete-btn {
+  position: absolute;
+  left: 5px;
+  top: 15px;
+  background: transparent;
+  border: none;
+  color: #e74c3c;
+  font-weight: 700;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.delete-btn:hover {
+  color: #c0392b;
+}
+
+@media (max-width: 480px) {
+  #sendBtn {
+    width: 100%;
+  }
+}

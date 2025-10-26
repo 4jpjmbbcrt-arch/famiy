@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <title>מתכונים משפחתיים</title>
+  <link rel="stylesheet" href="family-recipes.css">
+</head>
+<body>
+  <header>
+    <h1>📖 מתכונים של המשפחה</h1>
+    <button id="backHome">חזור לדף הבית</button>
+  </header>
+
+  <section class="recipe-form">
+    <h2>➕ הוסף מתכון חדש</h2>
+    <input type="text" id="recipeName" placeholder="שם המתכון" />
+    <input type="text" id="recipeBy" placeholder="המתכון באדיבות..." />
+    <textarea id="ingredients" placeholder="מצרכים (שורה לכל מרכיב)"></textarea>
+    <textarea id="instructions" placeholder="שלבי הכנה (שורה לכל שלב)"></textarea>
+    <input type="text" id="imageUrl" placeholder="קישור לתמונה" />
+    <select id="rating">
+      <option value="1">⭐</option>
+      <option value="2">⭐⭐</option>
+      <option value="3">⭐⭐⭐</option>
+      <option value="4">⭐⭐⭐⭐</option>
+      <option value="5">⭐⭐⭐⭐⭐</option>
+    </select>
+    <button id="addRecipeBtn">הוסף מתכון</button>
+  </section>
+
+  <section class="search">
+    <input type="text" id="searchInput" placeholder="חפש לפי שם מתכון..." />
+    <select id="filterRating">
+      <option value="">סינון לפי דירוג</option>
+      <option value="5">5 כוכבים</option>
+      <option value="4">4+</option>
+      <option value="3">3+</option>
+    </select>
+  </section>
+
+  <section id="recipesContainer"></section>
+
+  <script src="family-recipes.js"></script>
+</body>
+</html>

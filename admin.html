@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>ניהול האתר המשפחתי</title>
+  <link rel="stylesheet" href="admin.css">
+  <style>
+    /* אנימציות נוספות לכרטיסים */
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+      background: linear-gradient(135deg, #f5a623, #f093fb);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>👑 לוח ניהול האתר המשפחתי</h1>
+    <button class="logout-btn" onclick="logout()">התנתק</button>
+  </header>
+
+  <main class="dashboard">
+    <div class="card" onclick="openSection('users')">
+      <h2>👥 ניהול משתמשים</h2>
+      <p>צפה, ערוך או מחק משתמשים רשומים</p>
+    </div>
+
+    <div class="card" onclick="openSection('content')">
+      <h2>📰 ניהול תכנים</h2>
+      <p>פרסום הודעות, תמונות, פוסטים וחדשות</p>
+    </div>
+
+    <div class="card" onclick="openSection('ai')">
+      <h2>🤖 כלים חכמים</h2>
+      <p>נהל את תכונות ה־AI באתר (בוט, תחזיות, ברכות)</p>
+    </div>
+
+    <div class="card" onclick="openSection('stats')">
+      <h2>📊 סטטיסטיקות</h2>
+      <p>ראה מי נכנס, כמה זמן היה ומה הכי פופולרי</p>
+    </div>
+
+    <div class="card" onclick="openSection('Home')">
+      <h2>🏠 חזור לדף הבית</h2>
+      <p>דף הבית של המשפחה</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 האתר המשפחתי שלך ❤️</p>
+  </footer>
+
+  <script>
+    // פונקציה להפניה לפי הכרטיסים
+    function openSection(section) {
+      switch (section) {
+        case 'users': window.location.href = 'users.html'; break;
+        case 'content': window.location.href = 'content.html'; break;
+        case 'events': window.location.href = 'events.html'; break;
+        case 'design': window.location.href = 'design.html'; break;
+        case 'ai': window.location.href = 'ai-tools.html'; break;
+        case 'stats': window.location.href = 'stats.html'; break;
+        case 'Home': window.location.href = 'home.html'; break;
+        default: alert('מדור לא נמצא');
+      }
+    }
+
+    // פונקציית התנתקות
+    function logout() {
+      sessionStorage.removeItem('loggedUser'); // מוחק את המשתמש המחובר
+      alert('התנתקת בהצלחה!');
+      window.location.href = 'login.html';
+    }
+  </script>
+
+</body>
+</html>

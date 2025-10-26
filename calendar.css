@@ -1,0 +1,109 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  direction: rtl;
+  background: #f0f4f8;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  color: #2d3436;
+}
+
+#homeBtn {
+  background-color: #0984e3;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.calendar-header button {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.calendar-header h2 {
+  margin: 0 15px;
+  color: #2d3436;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.day {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px;
+  min-height: 80px;
+  background: #fff;
+  position: relative;
+}
+
+.day .date {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.day .event {
+  font-size: 0.8rem;
+  background: #74b9ff;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.event-form {
+  margin-top: 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.event-form input,
+.event-form button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.event-form button {
+  background-color: #00b894;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.event-form button:hover {
+  background-color: #019874;
+}

@@ -1,0 +1,179 @@
+/* --- עיצוב בסיסי --- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  direction: rtl;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- נייבר ובר המבורגר --- */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border-radius: 0 0 12px 12px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.menu-btn {
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.menu {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  display: none;
+  flex-direction: column;
+  width: 160px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  backdrop-filter: blur(5px);
+}
+
+.menu.show {
+  display: flex;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 15px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.menu a:last-child {
+  border-bottom: none;
+}
+
+.menu a:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* --- עיצוב ראשי --- */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  gap: 40px;
+}
+
+.welcome-section {
+  text-align: center;
+}
+
+.welcome-section h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.welcome-section p {
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+/* --- כפתורי פיצ'רים --- */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.feature-btn {
+  background: #fff;
+  color: #2575fc;
+  border: none;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 20px 25px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.feature-btn:hover {
+  background-color: #d6d6d6;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* --- כפתורי ניווט --- */
+.nav-btn {
+  background-color: #0984e3;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-btn:hover {
+  background-color: #0659b1;
+  transform: translateY(-2px);
+}
+
+/* --- לוח המודעות --- */
+.family-feed {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.family-feed h2 {
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.feed-item {
+  background: #fff;
+  color: #333;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.feed-item img {
+  max-width: 100%;
+  display: block;
+  margin-top: 5px;
+  border-radius: 6px;
+}
+
+/* --- רספונסיב --- */
+@media (max-width: 480px) {
+  .features {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

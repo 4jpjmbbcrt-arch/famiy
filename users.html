@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>ניהול משתמשים - אתר משפחתי</title>
+  <link rel="stylesheet" href="admin.css">
+  <style>
+    main { padding: 2rem; }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    th, td { padding: 12px 15px; text-align: right; border-bottom: 1px solid #ddd; }
+    th { background: #4CAF50; color: white; }
+    tr:hover { background: #f1f1f1; }
+    button { padding: 6px 12px; margin: 0 2px; border-radius: 5px; border: none; cursor: pointer; transition: 0.3s; }
+    .edit-btn { background: #ff9800; color: white; }
+    .edit-btn:hover { background: #e68900; }
+    .delete-btn { background: #f44336; color: white; }
+    .delete-btn:hover { background: #d32f2f; }
+    .back-btn { background: #4CAF50; color: white; margin-bottom: 15px; }
+    .back-btn:hover { background: #45a049; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>👥 ניהול משתמשים</h1>
+    <button class="back-btn" onclick="goBack()">⬅ חזור ללוח הניהול</button>
+  </header>
+
+  <main>
+    <table id="usersTable">
+      <thead>
+        <tr>
+          <th>שם משתמש</th>
+          <th>תפקיד</th>
+          <th>פעולות</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- המשתמשים יתווספו כאן דינמית -->
+      </tbody>
+    </table>
+  </main>
+
+  <script>
+    // בדיקה אם המשתמש מחובר ומנהל
+    const loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'));
+    if (!loggedUser || loggedUser.role !== 'admin') {
+      alert('גישה נדחתה – דף זה מיועד רק למנהלים');
+      window.location.href = 'login.html';
+    }
+
+    // קבלת כל המשתמשים
+    function getUsers() {
+      return JSON.parse(localStorage.getItem('users') || '{}');
+    }
+
+    function saveUsers(users) {
+      localStorage.setItem('users', JSON.stringify(users));
+    }
+
+    // הצגת המשתמשים בטבלה
+    function renderUsers() {
+      const users = getUsers();
+      const tbody = document.querySelector('#usersTable tbody');
+      tbody.innerHTML = '';
+
+      for (let username in users) {
+        const role = users[username].role;
+        const tr = document.createElement('tr');
+
+        tr.innerHTML = `
+          <td>${username}</td>
+          <td>${role}</td>
+          <td>
+            <button class="edit-btn" onclick="editUser('${username}')">ערוך</button>
+            <button class="delete-btn" onclick="deleteUser('${username}')">מחק</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      }
+    }
+
+    // עריכת משתמש
+    function editUser(username) {
+      const users = getUsers();
+      const newPass = prompt(`הזן סיסמה חדשה עבור ${username}:`, users[username].password);
+      if (newPass) {
+        users[username].password = newPass;
+        saveUsers(users);
+        alert('הסיסמה עודכנה בהצלחה!');
+        renderUsers();
+      }
+    }
+
+    // מחיקת משתמש
+    function deleteUser(username) {
+      if (confirm(`למחוק את המשתמש ${username} לצמיתות?`)) {
+        const users = getUsers();
+        delete users[username];
+        saveUsers(users);
+        renderUsers();
+      }
+    }
+
+    function goBack() {
+      window.location.href = 'admin.html';
+    }
+
+    // טעינת המשתמשים כשהדף נטען
+    document.addEventListener('DOMContentLoaded', renderUsers);
+  </script>
+
+</body>
+</html>

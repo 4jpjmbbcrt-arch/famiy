@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <title>משימות משפחתיות</title>
+  <link rel="stylesheet" href="family-tasks.css" />
+</head>
+<body>
+  <header>
+    <h1>ניהול משימות משפחתיות</h1>
+    <button id="backHome">חזור לדף הבית</button>
+  </header>
+
+  <main>
+    <section class="task-form">
+      <h2>הוספת משימה חדשה</h2>
+      <input type="text" id="taskTitle" placeholder="כותרת המשימה" />
+      <textarea id="taskDesc" placeholder="תיאור המשימה (אופציונלי)"></textarea>
+      <input type="date" id="taskDate" />
+      <select id="taskStatus">
+        <option value="פתוחה">📌 פתוחה</option>
+        <option value="בתהליך">🔄 בתהליך</option>
+        <option value="בוצעה">✅ בוצעה</option>
+      </select>
+      <input type="text" id="taskTags" placeholder="תגיות (מופרדות בפסיקים)" />
+      <input type="text" id="taskAssignee" placeholder="מי אחראי?" />
+      <button id="addTaskBtn">➕ הוסף משימה</button>
+    </section>
+
+    <section class="filters">
+      <h3>סינון משימות</h3>
+      <select id="filterStatus">
+        <option value="">ללא סינון סטטוס</option>
+        <option value="פתוחה">פתוחה</option>
+        <option value="בתהליך">בתהליך</option>
+        <option value="בוצעה">בוצעה</option>
+      </select>
+      <input type="text" id="filterTag" placeholder="תגית לחיפוש..." />
+      <button id="clearFilters">נקה סינון</button>
+    </section>
+
+    <section id="tasksContainer">
+      <!-- משימות יוצגו כאן -->
+    </section>
+  </main>
+
+  <script src="family-tasks.js"></script>
+</body>
+</html>

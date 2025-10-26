@@ -1,0 +1,158 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
+  direction: rtl;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+header {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-shadow: 0 0 5px #000000cc;
+}
+
+#backBtn {
+  background-color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 3px 7px rgba(0,0,0,0.25);
+  transition: background-color 0.3s ease;
+}
+
+#backBtn:hover {
+  background-color: #eee;
+}
+
+main {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 15px;
+  padding: 25px 30px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-pic-wrapper {
+  position: relative;
+  margin-bottom: 25px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.profile-pic-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#uploadPic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  color: #444;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  margin-top: 8px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid #74b9ff;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  border-color: #0984e3;
+}
+
+textarea {
+  min-height: 60px;
+  max-height: 120px;
+}
+
+button[type="submit"] {
+  background-color: #0984e3;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #0659b1;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0659b1;
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 20px;
+  }
+
+  .profile-pic-wrapper {
+    width: 110px;
+    height: 110px;
+  }
+
+  button[type="submit"] {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}

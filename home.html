@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>דף הבית - משפחה</title>
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">משפחת אוחנה</div>
+    <button class="menu-btn" id="menuBtn">&#9776;</button>
+    <div class="menu" id="menu">
+      <a href="settings.html" id="settingsBtn" class="nav-btn">הגדרות</a>
+      <a href="#" id="logoutBtn">התנתקות</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="welcome-section">
+      <h1 id="welcomeMsg">שלום, משתמש!</h1>
+      <p id="date"></p>
+    </section>
+
+    <section class="features">
+      <button id="tasksBtn" class="feature-btn">לוח מטלות משפחתי</button>
+      <button id="chatBtn" class="feature-btn">צ'אט משפחתי</button>
+      <button id="profileBtn" class="feature-btn">הפרופיל האישי שלי</button>
+      <button id="sendBtn" class="feature-btn">תזכורות</button>
+      <button id="reaminderBtn" class="feature-btn">יומן</button>
+      <button id="mesionBtn" class="feature-btn">משימות</button>
+      <button id="RecipeBtn" class="feature-btn">מתכונים</button>
+      <button id="guroBtn" class="feature-btn">ה-גורו</button>
+      <button id="botBtn" class="feature-btn">הבוט המשפחתי</button>
+      <button id="adminBtn" class="feature-btn">דף מנהל</button>
+    </section>
+
+    <section id="feedContainer" class="family-feed"></section>
+  </main>
+
+  <script src="home.js"></script>
+</body>
+</html>

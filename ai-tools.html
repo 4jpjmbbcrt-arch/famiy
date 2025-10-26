@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools - ניהול האתר החכם</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .ai-section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #ai-output {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #e8f0fe;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Tools - מנהל האתר החכם</h1>
+
+    <!-- ברכות יום הולדת -->
+    <div class="ai-section">
+        <h2>ברכות יום הולדת אוטומטיות</h2>
+        <input type="text" id="birthday-user" placeholder="שם המשתמש (לא חובה)">
+        <button onclick="birthdayWish()">שלח ברכה</button>
+        <div id="birthday-output"></div>
+    </div>
+
+    <!-- הודעות חכמות -->
+    <div class="ai-section">
+        <h2>שליחת הודעות חכמות</h2>
+        <textarea id="ai-message" placeholder="כתוב הודעה שתשלח למשתמשים"></textarea><br>
+        <button onclick="sendAIMessage()">שלח הודעה</button>
+        <div id="ai-message-output"></div>
+    </div>
+
+    <!-- המלצות חכמות -->
+    <div class="ai-section">
+        <h2>המלצות AI לשיפור האתר</h2>
+        <button onclick="smartRecommendations()">קבל המלצות</button>
+        <div id="ai-recommendations"></div>
+    </div>
+
+    <!-- סטטיסטיקות משתמשים -->
+    <div class="ai-section">
+        <h2>סטטיסטיקות פעילות משתמשים</h2>
+        <button onclick="userStatistics()">הצג סטטיסטיקות</button>
+        <div id="user-stats-output"></div>
+    </div>
+
+    <!-- הצעות לאירועים -->
+    <div class="ai-section">
+        <h2>הצעות לאירועים ופעילויות</h2>
+        <button onclick="eventSuggestions()">קבל הצעות</button>
+        <div id="events-output"></div>
+    </div>
+
+    <!-- צ'אט חכם -->
+    <div class="ai-section">
+        <h2>צ’אט חכם עם AI</h2>
+        <input type="text" id="chat-input" placeholder="כתוב משהו ל-AI">
+        <button onclick="aiChat()">שלח</button>
+        <div id="chat-output"></div>
+    </div>
+
+    <script>
+        // דוגמת משתמשים למסד נתונים מדומה
+        const users = [
+            {name: 'דניאל', birthday: '2025-10-26', lastLogin: '2025-10-25'},
+            {name: 'ליה', birthday: '2025-10-27', lastLogin: '2025-10-26'},
+            {name: 'אורי', birthday: '2025-10-26', lastLogin: '2025-10-26'}
+        ];
+
+        // ברכות יום הולדת אוטומטיות
+        function birthdayWish() {
+            const inputName = document.getElementById('birthday-user').value.trim();
+            const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+            let message = '';
+
+            if(inputName) {
+                message = `מזל טוב ${inputName}! שיהיה לך יום הולדת שמח! 🎉`;
+            } else {
+                // חפש משתמשים עם יום הולדת היום
+                const bdayUsers = users.filter(u => u.birthday === today);
+                if(bdayUsers.length === 0) {
+                    message = 'אין היום משתמשים שחוגגים יום הולדת.';
+                } else {
+                    message = bdayUsers.map(u => `מזל טוב ${u.name}! 🥳`).join('<br>');
+                }
+            }
+
+            document.getElementById('birthday-output').innerHTML = message;
+        }
+
+        // שליחת הודעות חכמות
+        function sendAIMessage() {
+            const message = document.getElementById('ai-message').value.trim();
+            if(!message) {
+                document.getElementById('ai-message-output').innerText = 'אנא כתוב הודעה.';
+                return;
+            }
+            const allUsers = users.map(u => u.name).join(', ');
+            document.getElementById('ai-message-output').innerHTML = `ה-AI שלח את ההודעה הבאה למשתמשים: ${allUsers}<br>"${message}"`;
+        }
+
+        // המלצות AI
+        function smartRecommendations() {
+            const recs = [
+                'הוסף גלריית תמונות דינמית למשתמשים.',
+                'אפשר למשתמשים לדרג תוכן ולתת פידבק.',
+                'הפעל מצב “AI חכם” שמציע עדכונים מותאמים אישית.',
+                'שלח הודעות אוטומטיות למשתמשים על אירועים קרובים.'
+            ];
+            const randomRec = recs[Math.floor(Math.random() * recs.length)];
+            document.getElementById('ai-recommendations').innerText = randomRec;
+        }
+
+        // סטטיסטיקות משתמשים
+        function userStatistics() {
+            let stats = users.map(u => `${u.name}: כניסה אחרונה ${u.lastLogin}`).join('<br>');
+            document.getElementById('user-stats-output').innerHTML = stats;
+        }
+
+        // הצעות לאירועים
+        function eventSuggestions() {
+            const events = [
+                'יום כיף משפחתי בגן הציבורי',
+                'תחרות צילום משפחתית',
+                'סדנת בישול קבוצתית',
+                'משחק טריוויה משפחתי באתר'
+            ];
+            const randomEvent = events[Math.floor(Math.random() * events.length)];
+            document.getElementById('events-output').innerText = randomEvent;
+        }
+
+        // צ’אט חכם מדומה
+        function aiChat() {
+            const input = document.getElementById('chat-input').value.trim().toLowerCase();
+            let response = '';
+
+            if(!input) {
+                response = 'אנא כתוב משהו ל-AI.';
+            } else if(input.includes('שלום') || input.includes('היי')) {
+                response = 'שלום! איך אפשר לעזור לך היום?';
+            } else if(input.includes('מה השעה')) {
+                response = `השעה עכשיו היא ${new Date().toLocaleTimeString()}`;
+            } else if(input.includes('מזל טוב')) {
+                response = 'תודה! מזל טוב גם לך 🎉';
+            } else {
+                response = 'מעניין! אני אחשוב על זה… 😎';
+            }
+
+            document.getElementById('chat-output').innerText = response;
+        }
+    </script>
+</body>
+</html>

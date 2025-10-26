@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>הרשמה - משפחה</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container auth-container">
+    <h1>הרשמה</h1>
+    <form id="registerForm">
+      <label for="username">שם משתמש:</label>
+      <input type="text" id="username" required />
+
+      <label for="password">סיסמה:</label>
+      <input type="password" id="password" required />
+
+      <label for="role">בחר סוג משתמש:</label>
+      <select id="role" required>
+        <option value="child">ילד 👦</option>
+        <option value="guest">אורח 👤</option>
+        <option value="admin">מנהל 🧑‍💼</option>
+      </select>
+
+      <div id="adminCodeContainer" style="display:none;">
+        <label for="adminCode">קוד סודי למנהל:</label>
+        <input type="password" id="adminCode" placeholder="הכנס קוד סודי" />
+      </div>
+
+      <button type="submit">הרשם</button>
+    </form>
+
+    <p>כבר רשום? <a href="login.html">התחבר כאן</a></p>
+    <div id="message" class="message"></div>
+  </div>
+
+  <script src="auth.js"></script>
+</body>
+</html>

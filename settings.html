@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>הגדרות משתמש</title>
+  <link rel="stylesheet" href="settings.css" />
+</head>
+<body>
+  <header>
+    <h1>הגדרות</h1>
+    <button id="backBtn">⬅ חזור לדף הבית</button>
+  </header>
+
+  <main>
+    <section class="setting-section">
+      <h2>שינוי סיסמה</h2>
+      <form id="changePasswordForm">
+        <label>
+          סיסמה נוכחית:
+          <input type="password" id="currentPassword" required />
+        </label>
+        <label>
+          סיסמה חדשה:
+          <input type="password" id="newPassword" required minlength="4" />
+        </label>
+        <label>
+          אימות סיסמה חדשה:
+          <input type="password" id="confirmPassword" required minlength="4" />
+        </label>
+        <button type="submit">שנה סיסמה</button>
+      </form>
+    </section>
+
+    <section class="setting-section">
+      <h2>ערכות צבע</h2>
+      <label>
+        <input type="radio" name="theme" value="light" checked /> בהיר
+      </label>
+      <label>
+        <input type="radio" name="theme" value="dark" /> כהה
+      </label>
+    </section>
+
+    <section class="setting-section">
+      <button id="logoutBtn" class="danger-btn">התנתק</button>
+      <button id="deleteProfileBtn" class="danger-btn">מחק פרופיל</button>
+    </section>
+  </main>
+
+  <script src="settings.js"></script>
+</body>
+</html>

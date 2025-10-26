@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>כניסה - משפחה</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container auth-container">
+    <h1>התחברות</h1>
+    <form id="loginForm">
+      <label for="username">שם משתמש:</label>
+      <input type="text" id="username" required />
+      
+      <label for="password">סיסמא:</label>
+      <input type="password" id="password" required />
+      
+      <button type="submit">התחבר</button>
+    </form>
+    <p>אין לך משתמש? <a href="index.html">הרשם כאן</a></p>
+    <div id="message" class="message"></div>
+  </div>
+
+  <script src="auth.js"></script>
+</body>
+</html>
+
+

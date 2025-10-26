@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>ניהול תכנים - אתר משפחתי</title>
+  <link rel="stylesheet" href="admin.css">
+  <style>
+    main { padding: 2rem; max-width: 800px; margin: auto; }
+    label { display: block; margin-top: 1rem; font-weight: bold; }
+    input, textarea { width: 100%; padding: 8px; margin-top: 5px; border-radius: 6px; border: 1px solid #ccc; }
+    button { margin-top: 10px; padding: 10px 15px; border-radius: 6px; border: none; cursor: pointer; transition: 0.3s; }
+    .save-btn { background: #4CAF50; color: white; }
+    .save-btn:hover { background: #45a049; }
+    .back-btn { background: #ff9800; color: white; margin-bottom: 15px; }
+    .back-btn:hover { background: #e68900; }
+    h2 { margin-top: 2rem; }
+    .content-list { margin-top: 20px; }
+    .content-item { background: white; padding: 10px; margin-bottom: 10px; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>📝 ניהול תכנים</h1>
+    <button class="back-btn" onclick="goBack()">⬅ חזור ללוח הניהול</button>
+  </header>
+
+  <main>
+    <h2>פרסם הודעה</h2>
+    <label for="messageInput">תוכן ההודעה:</label>
+    <textarea id="messageInput" rows="3" placeholder="כתוב כאן את ההודעה..."></textarea>
+    <button class="save-btn" onclick="addMessage()">פרסם הודעה</button>
+
+    <h2>פרסם תמונה</h2>
+    <label for="imageInput">קישור לתמונה (URL):</label>
+    <input type="text" id="imageInput" placeholder="הכנס כאן קישור לתמונה">
+    <button class="save-btn" onclick="addImage()">פרסם תמונה</button>
+
+    <h2>פרסם חדשות</h2>
+    <label for="newsInput">תוכן החדשות:</label>
+    <textarea id="newsInput" rows="3" placeholder="כתוב כאן את החדשות..."></textarea>
+    <button class="save-btn" onclick="addNews()">פרסם חדשות</button>
+
+    <div class="content-list" id="contentList">
+      <!-- התכנים יוצגו כאן -->
+    </div>
+  </main>
+
+  <script>
+    const loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'));
+    if (!loggedUser || loggedUser.role !== 'admin') {
+      alert('גישה נדחתה – דף זה מיועד רק למנהלים');
+      window.location.href = 'login.html';
+    }
+
+    function getContents() {
+      return JSON.parse(localStorage.getItem('content') || '[]');
+    }
+
+    function saveContents(contents) {
+      localStorage.setItem('content', JSON.stringify(contents));
+    }
+
+    function renderContents() {
+      const list = document.getElementById('contentList');
+      list.innerHTML = '';
+      const contents = getContents();
+      contents.forEach((c, index) => {
+        const div = document.createElement('div');
+        div.className = 'content-item';
+        if (c.type === 'message') div.innerHTML = `<strong>הודעה:</strong> ${c.text}`;
+        if (c.type === 'image') div.innerHTML = `<strong>תמונה:</strong><br><img src="${c.url}" alt="תמונה" style="max-width:100%; border-radius:6px;">`;
+        if (c.type === 'news') div.innerHTML = `<strong>חדשות:</strong> ${c.text}`;
+        list.appendChild(div);
+      });
+    }
+
+    function addMessage() {
+      const text = document.getElementById('messageInput').value.trim();
+      if (!text) return alert('אנא כתוב הודעה!');
+      const contents = getContents();
+      contents.push({ type: 'message', text });
+      saveContents(contents);
+      document.getElementById('messageInput').value = '';
+      renderContents();
+    }
+
+    function addImage() {
+      const url = document.getElementById('imageInput').value.trim();
+      if (!url) return alert('אנא הכנס קישור לתמונה!');
+      const contents = getContents();
+      contents.push({ type: 'image', url });
+      saveContents(contents);
+      document.getElementById('imageInput').value = '';
+      renderContents();
+    }
+
+    function addNews() {
+      const text = document.getElementById('newsInput').value.trim();
+      if (!text) return alert('אנא כתוב תוכן חדשות!');
+      const contents = getContents();
+      contents.push({ type: 'news', text });
+      saveContents(contents);
+      document.getElementById('newsInput').value = '';
+      renderContents();
+    }
+
+    function goBack() {
+      window.location.href = 'admin.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', renderContents);
+  </script>
+
+</body>
+</html>

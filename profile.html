@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>פרופיל אישי</title>
+  <link rel="stylesheet" href="profile.css" />
+</head>
+<body>
+  <header>
+    <h1>הפרופיל האישי שלי</h1>
+    <button id="backBtn">⬅ חזור לדף הבית</button>
+  </header>
+
+  <main>
+    <div class="profile-container">
+      <div class="profile-pic-wrapper">
+        <img id="profilePic" src="default-avatar.png" alt="תמונת פרופיל" />
+        <input type="file" id="uploadPic" accept="image/*" />
+      </div>
+
+      <form id="profileForm">
+        <label>
+          שם משתמש:
+          <input type="text" id="username" disabled />
+        </label>
+
+        <label>
+          גיל:
+          <input type="number" id="age" min="0" max="120" placeholder="הכנס גיל" />
+        </label>
+
+        <label>
+          תחביבים:
+          <textarea id="hobbies" placeholder="כתבו תחביבים קצרים..."></textarea>
+        </label>
+
+        <label>
+          תפקיד במשפחה:
+          <input type="text" id="role" placeholder="לדוגמה: אבא, אמא, אח, דודה..." />
+        </label>
+
+        <button type="submit">שמור פרופיל</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>צ'אט משפחתי</title>
+  <link rel="stylesheet" href="chat.css" />
+</head>
+<body>
+  <header>
+    <h1>צ'אט משפחתי</h1>
+    <button id="backBtn">⬅ חזור לדף הבית</button>
+  </header>
+
+  <main>
+    <div id="chatBox"></div>
+    <form id="chatForm">
+      <input
+        type="text"
+        id="messageInput"
+        placeholder="כתוב הודעה..."
+        autocomplete="off"
+        required
+      />
+      <button type="submit">שלח</button>
+    </form>
+  </main>
+
+  <script src="chat.js"></script>
+</body>
+</html>

@@ -44,3 +44,5 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(`ברוך הבא, ${user.username}!`);
   }
 });
+
+<script src="firebase.js"></script>
